@@ -1,4 +1,6 @@
 from fastapi import FastAPI, Request
+
+from Servei.user import get_user
 from .connexio import conn
 from .Servei import user
 
@@ -13,4 +15,7 @@ async def root():
 async def register_user(nom : str, cognom: str, email: str, descripcio: str, curs: str, any: int, dirrecio: str, codi_postal: str, password: str):
     return user.register_user()
 
+@app.get("/perfil/{user_id}")
+async def perfil(user_id: int):
+    return user.get_user()
 

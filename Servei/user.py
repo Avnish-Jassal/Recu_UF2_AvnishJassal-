@@ -13,3 +13,14 @@ def register_user():
     conn.close()
 
     return result
+
+def get_user():
+    conn = connection_db()
+    cursor = conn.cursor()
+    cursor.execute(""" SELECT id, nom, cognom, email, curs, any, direccio FROM clients WHERE id = %s """)
+    result = cursor.fetchall()
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return result
