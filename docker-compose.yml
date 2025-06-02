@@ -1,0 +1,36 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:13
+    container_name: db
+    environment:
+      POSTGRES_DB: fastapi
+      POSTGRES_USER: ITIC_user
+      POSTGRES_PASSWORD: ITIC
+    ports:
+      - "2344:5432"
+    volumes:
+      - local_pgdata:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4
+    platform: linux/amd64
+    ports:
+      - "8080:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: roger.sobrino@xtec.cat
+      PGADMIN_DEFAULT_PASSWORD: roger123
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    ports:
+      - "8081:8080"
+
+volumes:
+  local_pgdata:
+  pgadmin-data:
