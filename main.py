@@ -3,7 +3,6 @@ from Servei.user import get_user
 from connexio import conn
 from Servei import user
 
-
 app = FastAPI()
 
 @app.post("/register")
@@ -12,12 +11,12 @@ async def register_user(nom : str, cognom: str, email: str, descripcio: str, cur
 
 @app.get("/perfil/{user_id}")
 async def perfil(user_id: int):
-    return user.get_user()
+    return user.get_user(user_id)
 
 @app.put("/perfil{user_id}")
 async def update_perfil(user_id : int, cognom : str, dirrecio : str):
     return update_perfil(user_id, cognom, dirrecio)
 
-app.delete("/perfil/{id}")
+@app.delete("/perfil/{id}")
 async def delete_user(user_id : int):
     return delete_user(user_id)

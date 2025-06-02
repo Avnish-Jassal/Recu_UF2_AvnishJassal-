@@ -1,6 +1,5 @@
 from connexio.conn import connection_db
 
-
 def register_user():
     conn = connection_db()
     cursor = conn.cursor()
