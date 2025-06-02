@@ -19,3 +19,6 @@ async def register_user(nom : str, cognom: str, email: str, descripcio: str, cur
 async def perfil(user_id: int):
     return user.get_user()
 
+@app.put("/perfil{user_id}")
+async def update_perfil(id : int, cognom : str, dirrecio : str):
+    return update_perfil(id, cognom, dirrecio)

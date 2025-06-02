@@ -24,3 +24,15 @@ def get_user():
     conn.close()
 
     return result
+
+def update_user(id, cognom, dirrecio):
+    conn = connection_db()
+    cursor = conn.cursor()
+    cursor.execute("""UPDATE clients SET cognom=%s, direccio=%s WHERE id=%s""")
+    result = cursor.fetchall()
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return result
+
