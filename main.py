@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 from Servei.user import get_user
-from .connexio import conn
-from .Servei import user
+from connexio import conn
+from Servei import user
 
 
 app = FastAPI()
