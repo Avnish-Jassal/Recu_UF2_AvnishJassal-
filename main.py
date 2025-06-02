@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from Servei.user import get_user
 from connexio import conn
 from Servei import user
+from Servei.user import delete_user
 
 app = FastAPI()
 
@@ -15,8 +16,8 @@ async def perfil(user_id: int):
 
 @app.put("/perfil{user_id}")
 async def update_perfil(user_id : int, cognom : str, dirrecio : str):
-    return update_perfil(user_id, cognom, dirrecio)
+    return user.update_perfil(user_id, cognom, dirrecio)
 
 @app.delete("/perfil/{id}")
 async def delete_user(user_id : int):
-    return delete_user(user_id)
+    return user.delete_user(user_id)

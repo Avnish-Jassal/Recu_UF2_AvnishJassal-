@@ -38,7 +38,7 @@ def update_user(id, cognom, dirrecio):
 def delete_user (id):
     conn = connection_db()
     cursor = conn.cursor()
-    cursor.execute("""DELETE FROM clients WHERE id = %s,""")
+    cursor.execute("""DELETE FROM clients WHERE id = %s""")
     result = cursor.fetchall()
     conn.commit()
     cursor.close()
